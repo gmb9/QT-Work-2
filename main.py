@@ -11,7 +11,7 @@ class MainWindow(QObject):
 
         #reference to our music player
         self.music_player = QMediaPlayer()
-        self.music_player.setVolume(100)
+        volume = self.music_player.setVolume(100)
 
         #call parent QObject constructor
         super(MainWindow, self).__init__(parent)
@@ -35,6 +35,21 @@ class MainWindow(QObject):
         play_button = self.window.findChild(QPushButton, 'play_button')
         play_button.clicked.connect(self.play_button_clicked)
 
+        pause_button = self.window.findChild(QPushButton, 'pause_button')
+        pause_button.clicked.connect(self.pause_button_clicked)
+
+        v_up = self.window.findChild(QPushButton, 'v_up')
+        v_up.clicked.connect(self.v_up_clicked)
+
+        v_down = self.window.findChild(QPushButton, 'v_down')
+        v_down.clicked.connect(self.v_down_clicked)
+
+        #skip_prev = self.window.findChild(QPushButton, 'skip_prev')
+        #skip_prev.clicked.connect(self.skip_prev_clicked)
+
+        #skip_next = self.window.findChild(QPushButton, 'skip_next')
+        #skip_next.clicked.connect(self.skip_next_clicked)
+
         #show window to user
         self.window.show()
 
@@ -47,6 +62,23 @@ class MainWindow(QObject):
 
     def play_button_clicked(self):
         self.music_player.play()
+
+    def pause_button_clicked(self):
+        self.music_player.pause()
+
+    def v_up_clicked(self):
+        vol = self.music_player.volume()
+        self.music_player.setVolume(vol + 10)
+
+    def v_down_clicked(self):
+        vol = self.music_player.volume()
+        self.music_player.setVolume(vol - 10)
+
+    #def skip_prev_clicked(self):
+        
+
+    #def skip_next_clicked(self):
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
