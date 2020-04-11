@@ -75,10 +75,12 @@ class MainWindow(QObject):
         self.music_player.setVolume(vol - 10)
 
     #def skip_prev_clicked(self):
-        
+        #Having trouble thinking of ways to move to next
+        #compatable, playable music file
 
     #def skip_next_clicked(self):
-        
+        #Having trouble thinking of ways to move to next
+        #compatable, playable music file
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
